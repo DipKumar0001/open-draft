@@ -7,7 +7,7 @@
     "docassist": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc && npm run postbuild",
+    "build": "tsc",
     "postbuild": "mkdir -p dist/python && cp src/python/converter.py dist/python/converter.py",
     "dev": "ts-node src/index.ts",
     "start": "node dist/index.js",

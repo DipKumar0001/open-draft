@@ -13,6 +13,9 @@ npm link
 ## Quick Start Examples
 
 ```bash
+# Start Claude Code-style interactive REPL (defaults to Ollama)
+open-draft
+
 # Scan a specific file and log output
 docassist scan ./my-document.pdf
 

@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
 import { program } from './cli';
-import { launchUI } from './ui';
 import { loadConfig } from './config';
 import { startRepl } from './repl';
 
 async function main() {
   const args = process.argv.slice(2);
 
-  // No arguments → launch interactive menu UI
+  // No arguments → launch REPL (Claude Code-style default)
   if (args.length === 0) {
-    await launchUI();
+    const config = loadConfig();
+    await startRepl(config);
     return;
   }
 

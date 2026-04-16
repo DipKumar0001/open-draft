@@ -5,7 +5,6 @@ import { parseDocx } from './docx';
 import { parseXlsx } from './xlsx';
 import { parseCsv } from './csv';
 import { parsePptx } from './pptx';
-import { parseImage } from './image';
 import { parseText } from './text';
 import path from 'path';
 
@@ -36,7 +35,11 @@ export async function parseFile(filepath: string): Promise<ParseResult> {
       case '.gif':
       case '.webp':
       case '.bmp':
-      case '.tiff': content = await parseImage(filepath); break;
+      case '.tiff': {
+        const { parseImage } = await import('./image');
+        content = await parseImage(filepath);
+        break;
+      }
       case '.txt':
       case '.md': content = await parseText(filepath); break;
       default:
