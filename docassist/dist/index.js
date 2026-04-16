@@ -2,14 +2,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const cli_1 = require("./cli");
-const ui_1 = require("./ui");
 const config_1 = require("./config");
 const repl_1 = require("./repl");
 async function main() {
     const args = process.argv.slice(2);
-    // No arguments → launch interactive menu UI
+    // No arguments → launch REPL (Claude Code-style default)
     if (args.length === 0) {
-        await (0, ui_1.launchUI)();
+        const config = (0, config_1.loadConfig)();
+        await (0, repl_1.startRepl)(config);
         return;
     }
     // First arg starts with a flag/option rather than a subcommand → infer chat/REPL
